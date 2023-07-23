@@ -1,6 +1,7 @@
 ﻿string mensagemDeBoasVindas = "Seja bem-vindo ao Screen Sound";
+List<string> listaBandas = new List<string> { "Angra", "Kryour", "Maneskin" };
 
-void ExibirMensagem()
+void ExibirLogo()
 {
     Console.WriteLine(@"
         ░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
@@ -15,9 +16,10 @@ void ExibirMensagem()
 
 void ExibirOpcoesMenu()
 {
+    ExibirLogo();
     Console.WriteLine("\n--------------Menu--------------");
     Console.WriteLine("1 - Registrar uma banda");
-    Console.WriteLine("2 - Listar todas as bandas");
+    Console.WriteLine("2 - Exibir todas as bandas");
     Console.WriteLine("3 - Avaliar uma banda");
     Console.WriteLine("4 - Exibir a média de uma banda");
     Console.WriteLine("0 - Para sair");
@@ -28,11 +30,11 @@ void ExibirOpcoesMenu()
 
     switch(opcaoEscolhidaNumerica)
     {
-        case 1: 
-            Console.WriteLine("Você escolheu a opção " +  opcaoEscolhida); 
+        case 1:
+            RegistrarBanda();
             break;
         case 2:
-            Console.WriteLine("Você escolheu a opção " + opcaoEscolhida);
+            ExibirBandasRegistradas();
             break;
         case 3:
             Console.WriteLine("Você escolheu a opção " + opcaoEscolhida);
@@ -49,5 +51,40 @@ void ExibirOpcoesMenu()
     }
 }
 
-ExibirMensagem();
+void RegistrarBanda()
+{
+    Console.Clear();
+    Console.WriteLine("*****************");
+    Console.WriteLine("Registro de Banda");
+    Console.WriteLine("*****************\n");
+    Console.Write("Digite o nome da banda que deseja registrar: ");
+    string nomeBanda = Console.ReadLine()!;
+    listaBandas.Add(nomeBanda);
+    Console.WriteLine($"\nA banda {nomeBanda} foi registrada com sucesso!");
+    Thread.Sleep(2000);
+    Console.Clear();
+    ExibirOpcoesMenu();
+}
+
+void ExibirBandasRegistradas()
+{
+    Console.Clear();
+    Console.WriteLine("*****************************");
+    Console.WriteLine("Exibindo a listagem de bandas");
+    Console.WriteLine("*****************************\n");
+    //for(int i = 0; i < listaBandas.Count; i++)
+    //{
+    //    Console.WriteLine($"{i+1}#: {listaBandas[i]}");
+    //}
+    foreach(string banda in listaBandas)
+    {
+        Console.WriteLine($"Banda: {banda}");
+    }
+
+    Console.WriteLine("\nPressione uma tecla para retorno ao menu principal");
+    Console.ReadKey();
+    Console.Clear();
+    ExibirOpcoesMenu();
+}
+
 ExibirOpcoesMenu();
