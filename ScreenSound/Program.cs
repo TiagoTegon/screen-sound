@@ -1,7 +1,14 @@
 ﻿string mensagemDeBoasVindas = "Seja bem-vindo ao Screen Sound";
-Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
-bandasRegistradas.Add("Megadeth", new List<int> { 10, 9, 10 });
-bandasRegistradas.Add("Angra", new List<int>());
+Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>> 
+{
+    { 
+        "Megadeth", new List<int> { 10, 9, 8 }
+    },
+    { 
+        "Angra", new List<int>()
+    }
+};
+
 void ExibirLogo()
 {
     Console.WriteLine(@"
@@ -38,7 +45,7 @@ void ExibirOpcoesMenu()
             ExibirBandasRegistradas();
             break;
         case 3:
-            Console.WriteLine("Você escolheu a opção " + opcaoEscolhida);
+            AvaliarBanda();
             break;
         case 4:
             Console.WriteLine("Você escolheu a opção " + opcaoEscolhida);
@@ -85,6 +92,31 @@ void ExibirBandasRegistradas()
 
     Console.WriteLine("\nPressione uma tecla para retorno ao menu principal");
     Console.ReadKey();
+    Console.Clear();
+    ExibirOpcoesMenu();
+}
+
+void AvaliarBanda()
+{
+    Console.Clear();
+    ExibirTituloOpcao("Avaliar uma banda");
+    Console.Write("Digite o nome da banda que deseja avaliar: ");
+    string nomeBanda = Console.ReadLine()!;
+
+    if(!bandasRegistradas.ContainsKey(nomeBanda))
+    {
+        Console.WriteLine($"\nA banda {nomeBanda} não foi encontrada!");
+        Console.WriteLine("Pressione uma tecla para voltar ao menu principal");
+        Console.ReadKey();
+        Console.Clear();
+        ExibirOpcoesMenu();
+    }
+
+    Console.Write($"\nQual nota a banda {nomeBanda} merece: ");
+    int nota = int.Parse(Console.ReadLine()!);
+    bandasRegistradas[nomeBanda].Add(nota);
+    Console.WriteLine($"A nota {nota} foi registrada com sucesso para a banda {nomeBanda}!");
+    Thread.Sleep(2000);
     Console.Clear();
     ExibirOpcoesMenu();
 }
