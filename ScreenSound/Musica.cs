@@ -4,6 +4,7 @@
     public string Artista { get; set; }
     public int Duracao { get; set; }
     public bool Disponivel { get; set; }
+    public Genero Genero { get; set; }
     public string Descricao => $"A música {Nome} pertence à banda {Artista}";
     public void ExibirFichaTecnica()
     {
