@@ -1,18 +1,24 @@
-﻿Album albumMegadeth = new Album();
-albumMegadeth.Nome = "Hangar 18";
+﻿Banda megadeth = new Banda("Megadeth");
 
-Musica musica1 = new Musica();
-musica1.Nome = "Tornado of Souls";
-musica1.Duracao = 50;
+Album albumMegadeth = new Album("Hangar 18");
 
-Musica musica2 = new Musica();
-musica2.Nome = "Hangar 18";
-musica2.Duracao = 100;
+Musica musica1 = new Musica(megadeth, "Tornado of Souls")
+{
+    Duracao = 50,
+    Disponivel = true,
+};
+
+Musica musica2 = new Musica(megadeth, "Hangar 18")
+{
+    Duracao = 100,
+    Disponivel = false,
+};
 
 albumMegadeth.AdicionarMusica(musica1);
 albumMegadeth.AdicionarMusica(musica2);
-
-Banda megadeth = new Banda();
 megadeth.AdicionarAlbum(albumMegadeth);
 
+musica1.ExibirFichaTecnica();
+musica2.ExibirFichaTecnica();
+albumMegadeth.ExibirMusicas();
 megadeth.ExibirDiscografia();
