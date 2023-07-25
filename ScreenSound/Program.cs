@@ -1,4 +1,5 @@
 ﻿Album albumMegadeth = new Album();
+albumMegadeth.Nome = "Hangar 18";
 
 Musica musica1 = new Musica();
 musica1.Nome = "Tornado of Souls";
@@ -11,4 +12,7 @@ musica2.Duracao = 100;
 albumMegadeth.AdicionarMusica(musica1);
 albumMegadeth.AdicionarMusica(musica2);
 
-albumMegadeth.ExibirMusicas();
+Banda megadeth = new Banda();
+megadeth.AdicionarAlbum(albumMegadeth);
+
+megadeth.ExibirDiscografia();
