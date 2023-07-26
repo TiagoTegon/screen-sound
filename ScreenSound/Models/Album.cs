@@ -1,4 +1,6 @@
-﻿class Album
+﻿namespace ScreenSound.Models;
+
+class Album
 {
     private List<Musica> musicas = new List<Musica>();
 
@@ -8,20 +10,21 @@
     }
 
     public string Nome { get; }
-    public int DuracaoTotal => musicas.Sum(musica => musica.Duracao);
+    public int DuracaoTotal => musicas.Sum(m => m.Duracao);
+    public List<Musica> Musicas => musicas;
 
     public void AdicionarMusica(Musica musica)
     {
         musicas.Add(musica);
     }
 
-    public void ExibirMusicas()
+    public void ExibirMusicasDoAlbum()
     {
-        Console.WriteLine($"Lista de músicas do álbum {Nome}\n");
+        Console.WriteLine($"Lista de músicas do álbum {Nome}:\n");
         foreach (var musica in musicas)
         {
             Console.WriteLine($"Música: {musica.Nome}");
         }
-        Console.WriteLine($"\nPara ouvir esse álbum você precisa de {DuracaoTotal} segundos");
+        Console.WriteLine($"\nPara ouvir este álbum inteiro você precisa de {DuracaoTotal}");
     }
 }
