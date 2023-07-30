@@ -54,7 +54,7 @@ void ExibirOpcoesDoMenu()
     {
         Menu menuEscolhido = menus[opcaoEscolhidaNumerica];
         menuEscolhido.Executar(bandasRegistradas);
-        ExibirOpcoesDoMenu();
+        if (opcaoEscolhidaNumerica > 0) ExibirOpcoesDoMenu();
     } else
     {
         Console.WriteLine("Opção inválida");
